@@ -6,6 +6,7 @@ package salle_gym;
 
 import entite.TypeAbonnement;
 import gui_admin.controller.TypeAbonnementController;
+import gui_admin.view.dashboard.Dashboard;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import javax.swing.JFrame;
@@ -32,12 +33,14 @@ public class Main {
         
         fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         fenetre.setVisible(true);*/
-        TypeAbonnementController controller = new TypeAbonnementController();
+        //TypeAbonnementController controller = new TypeAbonnementController();
         //controller.edit();
-        TypeAbonnementService service =  new TypeAbonnementService();
-        TypeAbonnement entite = service.trouver("HEBDO");
-        System.out.println(entite);
-        controller.ajouter();
+        //TypeAbonnementService service =  new TypeAbonnementService();
+        //TypeAbonnement entite = service.trouver("HEBDO");
+        //System.out.println(entite);
+        //controller.ajouter();
+        
+        new Dashboard();
     }
     
 }
