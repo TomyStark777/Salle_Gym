@@ -4,12 +4,13 @@
  */
 package gui_admin.view.dashboard;
 
-
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -22,18 +23,23 @@ public class Dashboard {
     private CardLayout cardLayout;
 
     public Dashboard() {
-        fenetre = new JFrame("Tableau de bord");
-        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fenetre.setSize(800, 600);
+        fenetre = new JFrame("Salle De Sport");
+        fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        fenetre.setSize(1280, 800);
         fenetre.setLayout(new BorderLayout());
 
         cardLayout = new CardLayout();
         contenu = new JPanel(cardLayout);
 
         // Ajoute les différents contenus avec un nom unique
-        contenu.add(new JLabel("Bienvenue sur le dashboard", JLabel.CENTER), "Accueil");
+        contenu.add(new AccueilPanel(), "Accueil");
+        contenu.add(new MembresPanel(), "Membres");
+        contenu.add(new JLabel("Informations sur les Tickets"), "Tickets");
+        contenu.add(new JLabel("Gestion des Paiements"), "Paiements");
+
         contenu.add(new JLabel("Gestion des abonnements", JLabel.CENTER), "Abonnements");
         contenu.add(new JLabel("Gestion des paiements", JLabel.CENTER), "Paiements");
+        contenu.add(new JLabel("Gestion des salles"), "Gestion des salles");
 
         DashboardMenu menu = new DashboardMenu(this);
 
@@ -48,12 +54,13 @@ public class Dashboard {
 
         fenetre.add(menu, BorderLayout.WEST);
         fenetre.add(contenu, BorderLayout.CENTER);
-        fenetre.add(new JLabel("\u00A9 Copyright..."), BorderLayout.SOUTH);
+        JLabel footer = new JLabel("© 2023 Salle De Sport - Tous droits réservés", JLabel.CENTER);
+        footer.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+        fenetre.add(footer, BorderLayout.SOUTH);
         fenetre.setLocationRelativeTo(null);
         fenetre.setVisible(true);
     }
 
-    // Affiche la vue correspondant au nom passé
     public void afficherContenu(String nom) {
         cardLayout.show(contenu, nom);
     }

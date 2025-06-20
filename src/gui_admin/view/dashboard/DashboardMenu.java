@@ -43,7 +43,7 @@ public class DashboardMenu extends JPanel {
         option.setContentAreaFilled(true);
         option.setFocusPainted(false);
         option.setOpaque(true);
-        option.setBackground(this.getBackground());
+        option.setBackground(this.getBackground());  
         option.setForeground(Color.WHITE);
         option.setFont(new Font("Arial", Font.PLAIN, 15));
         option.setRolloverEnabled(false);
